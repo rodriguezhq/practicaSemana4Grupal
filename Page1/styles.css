@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "sans-serif", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.window {
+    background: #121212;
+    border: 1px solid #424242;
+    border-radius: 8px;
+    width: 520px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #666;
+}
+
+.title-bar {
+    background: #424242;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid #374151;
+}
+
+.title-bar svg {
+    width: 18px;
+    height: 18px;
+    fill: #c7c7c7;
+    cursor: pointer;
+    transition: fill 0.2s;
+}
+
+.title-bar svg:hover {
+    fill: #38bdf8;
+}
+
+.form-content {
+    padding: 32px 36px 28px;
+}
+
+.field-group {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.field-group input[type="text"],
+.field-group input[type="email"] {
+    width: 100%;
+    background: #1b1b1b;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid #424242;
+    padding: 18px 0 6px 0;
+    color: #f3f4f6;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.25s ease;
+}
+
+.field-group label {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    color: #9ca3af;
+    font-size: 14px;
+    pointer-events: none;
+    transition:
+        top 0.25s ease,
+        font-size 0.25s ease,
+        color 0.25s ease;
+}
+
+.field-group input:focus ~ label {
+    top: -4px;
+    font-size: 11px;
+    color: #38bdf8;
+}
+
+.field-group input:not(:placeholder-shown) ~ label {
+    top: -4px;
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.field-group input:focus {
+    border-bottom-color: #38bdf8;
+}
+
+.drop-wrapper {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #424242;
+    transition: border-color 0.25s;
+}
+
+.drop-wrapper:focus-within {
+    border-bottom-color: #38bdf8;
+}
+
+.drop-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.drop-label svg {
+    width: 28px;
+    height: 28px;
+    fill: #6b7280;
+    flex-shrink: 0;
+    transition: fill 0.25s;
+}
+
+.drop-wrapper:focus-within .drop-label svg {
+    fill: #38bdf8;
+}
+
+.drop-label span {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.drop-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #38bdf8;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    color: #d1d5db;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.btn-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 9px 22px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-submit {
+    background: #212121;
+    color: #cccccc;
+}
+
+.btn-submit:hover {
+    background: #0ea5e9;
+}
+
+.btn-clear {
+    background: #212121;
+    color: #cccccc;
+}
+
+.btn-clear:hover {
+    background: #4b5563;
+}
