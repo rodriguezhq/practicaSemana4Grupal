@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Calificada</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Imagen de fondo solicitada con un overlay oscuro para resaltar las tarjetas */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Assets/AJO5EHX2S5HG5NXK6SYGWJIUIQ.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+
+        h1 { 
+            margin-bottom: 50px; 
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Contenedor */
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Card base */
+        .card {
+            width: 260px;
+            height: 320px;
+            perspective: 1200px;
+            text-decoration: none;
+        }
+
+        /* Interior (lo que gira) */
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Animación: giro 180° en ambos ejes según requisito */
+        .card:hover .card-inner {
+            transform: rotateX(180deg) rotateY(180deg);
+        }
+
+        /* Caras */
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            color: white;
+            padding: 25px;
+            box-sizing: border-box;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Frente */
+        .card-front {
+            background: linear-gradient(135deg, #2c1b24, #1a1a2e);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .card:nth-child(2) .card-front {
+            background: linear-gradient(135deg, #0b2d4f, #051937);
+        }
+
+        .card:nth-child(3) .card-front {
+            background: linear-gradient(135deg, #2d3b2c, #0f1c11);
+        }
+
+        .card-front h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.6rem;
+        }
+
+        .card-front p {
+            font-size: 0.95rem;
+            color: #d1d1d1;
+            margin-bottom: 30px;
+        }
+
+        /* Icono de flecha en el frente */
+        .icon-arrow {
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Reverso */
+        .card-back {
+            background: #2196F3;
+            transform: rotateX(180deg) rotateY(180deg);
+        }
+        
+        .card:nth-child(1) .card-back { background: #b04653; }
+        .card:nth-child(2) .card-back { background: #1b6ca8; }
+        .card:nth-child(3) .card-back { background: #4caf50; }
+
+        .card-back h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        .card-back p {
+            font-size: 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-more {
+            margin-top: auto;
+            padding: 8px 20px;
+            border: 2px solid white;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            background: transparent;
+            border-radius: 4px;
+        }
+
+        .card:hover .btn-more:hover {
+            background: white;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Página Principal</h1>
+
+    <div class="container">
+        <a href="Page1/Page1.html" class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h2>Page 1</h2>
+                    <p>Custom Domains</p>
+                    <div class="icon-arrow">&rsaquo;</div>
+                </div>
+                <div class="card-back">
+                    <h3>Detalles</h3>
+                    <p>Trabajo de Champi</p>
+                    <div class="btn-more">Learn More</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="Page2/Page2.html" class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h2>Page 2</h2>
+                    <p>Never Sleeps</p>
+                    <div class="icon-arrow">&rsaquo;</div>
+                </div>
+                <div class="card-back">
+                    <h3>Detalles</h3>
+                    <p>Trabajo de Jose</p>
+                    <div class="btn-more">Learn More</div>
+                </div>
+            </div>
+        </a>
+
+        <a href="Page3/Page3.html" class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h2>Page 3</h2>
+                    <p>Dedicated</p>
+                    <div class="icon-arrow">&rsaquo;</div>
+                </div>
+                <div class="card-back">
+                    <h3>Detalles</h3>
+                    <p>Trabajo de Melgarejo</p>
+                    <div class="btn-more">Learn More</div>
+                </div>
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>
