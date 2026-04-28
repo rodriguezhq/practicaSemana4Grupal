@@ -1,1 +1,137 @@
-2
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios 2</title>
+    <link rel="stylesheet" href="css/Page2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicios - Page 2</h1>
+
+        <h2 class="section-title">Ejercicio 3.a - Ventana de Volumen</h2>
+        <div class="volume-window">
+            <div class="window-header">
+                <svg viewBox="0 0 24 24" class="window-icon" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 1v3M12 20v3M4.5 4.5l2 2M17.5 17.5l2 2M1 12h3M20 12h3M4.5 19.5l2-2M17.5 6.5l2-2"></path></svg>
+                <svg viewBox="0 0 24 24" class="window-icon" aria-hidden="true"><path d="M12 3l7 12H5L12 3z"></path><circle cx="12" cy="13" r="1.2"></circle></svg>
+                <svg viewBox="0 0 24 24" class="window-icon" aria-hidden="true"><path d="M6 4h9l3 3v13H6z"></path><path d="M15 4v3h3"></path><path d="M8 11h8M8 15h8"></path></svg>
+                <svg viewBox="0 0 24 24" class="window-icon" aria-hidden="true"><path d="M9 7l-4 5 4 5M15 7l4 5-4 5"></path></svg>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Media volume</span>
+                </div>
+                <div class="control-content">
+                    <div class="control-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ccc" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        </svg>
+                    </div>
+                    <input type="range" min="0" max="100" value="70" class="slider" id="mediaVolume">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Alarm volume</span>
+                </div>
+                <div class="control-content">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="alarmVolume">
+                    <div class="control-icon control-icon--right">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ccc" stroke-width="2">
+                            <circle cx="12" cy="12" r="8"></circle>
+                            <path d="M12 8v4l3 2"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Icon click callback</span>
+                </div>
+                <div class="control-content">
+                    <div class="control-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ccc" stroke-width="2">
+                            <circle cx="11" cy="11" r="5"></circle>
+                            <path d="M11 8v6M8 11h6M16 16l4 4"></path>
+                        </svg>
+                    </div>
+                    <input type="range" min="0" max="100" value="30" class="slider" id="iconCallback">
+                    <div class="control-icon control-icon--right">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ccc" stroke-width="2">
+                            <circle cx="11" cy="11" r="5"></circle>
+                            <path d="M11 8v6M8 11h6M16 16l4 4"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title section-title--spaced">Ejercicio 3.b - Selector de Color RGB</h2>
+        <div class="color-card">
+            <div class="color-part-1">
+                <div class="color-display" id="colorDisplay"></div>
+            </div>
+
+            <div class="color-part-2">
+                <div class="rgb-control">
+                    <div class="rgb-label">R</div>
+                    <div class="rgb-control-slider">
+                        <input type="range" min="0" max="255" value="80" class="rgb-slider" id="redSlider" data-color="R">
+                    </div>
+                    <input type="number" min="0" max="255" value="80" class="rgb-value" id="redValue">
+                </div>
+
+                <div class="rgb-control">
+                    <div class="rgb-label">G</div>
+                    <div class="rgb-control-slider">
+                        <input type="range" min="0" max="255" value="165" class="rgb-slider" id="greenSlider" data-color="G">
+                    </div>
+                    <input type="number" min="0" max="255" value="165" class="rgb-value" id="greenValue">
+                </div>
+
+                <div class="rgb-control">
+                    <div class="rgb-label">B</div>
+                    <div class="rgb-control-slider">
+                        <input type="range" min="0" max="255" value="92" class="rgb-slider" id="blueSlider" data-color="B">
+                    </div>
+                    <input type="number" min="0" max="255" value="92" class="rgb-value" id="blueValue">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const rgb = {
+            r: document.getElementById('redSlider'),
+            g: document.getElementById('greenSlider'),
+            b: document.getElementById('blueSlider'),
+            vr: document.getElementById('redValue'),
+            vg: document.getElementById('greenValue'),
+            vb: document.getElementById('blueValue'),
+            box: document.getElementById('colorDisplay')
+        };
+
+        const paint = () => rgb.box.style.backgroundColor = `rgb(${rgb.r.value}, ${rgb.g.value}, ${rgb.b.value})`;
+        const sync = key => () => {
+            rgb['v' + key].value = rgb[key].value;
+            paint();
+        };
+
+        ['r', 'g', 'b'].forEach(key => {
+            rgb[key].oninput = sync(key);
+            rgb['v' + key].oninput = () => {
+                const value = Math.max(0, Math.min(255, Number(rgb['v' + key].value) || 0));
+                rgb['v' + key].value = rgb[key].value = value;
+                paint();
+            };
+        });
+
+        paint();
+    </script>
+
+</body>
+</html>
